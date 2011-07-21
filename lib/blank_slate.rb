@@ -8,6 +8,12 @@ module ActsAsFerret
   elsif defined?(::BasicObject)
     # Ruby 1.9.x
     class BlankSlate < BasicObject
+      # Fix taken from discussion here:
+      # http://j-k.lighthouseapp.com/projects/45560/tickets/177-ruby-192-undefined-method-reveal-for-actsasferretsearchresultsclass
+      class << self
+        def reveal(name)
+        end
+      end
     end
     
   elsif defined?(::BlankSlate)
